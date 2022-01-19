@@ -237,6 +237,8 @@ static NSString *_ImageNameAtIndex(NSUInteger index);
     // don't let minScale exceed maxScale. (If the image is smaller than the screen, we don't want to force it to be zoomed.) 
     if (minScale > maxScale) {
         minScale = maxScale;
+    } else if (minScale == 0) {
+        minScale = maxScale * 0.5;
     }
         
     self.maximumZoomScale = maxScale;
@@ -313,11 +315,11 @@ static NSArray *_ImageData(void)
     dispatch_once(&onceToken, ^{
         NSString *path = [[NSBundle mainBundle] pathForResource:@"ImageData" ofType:@"plist"];
         NSData *plistData = [NSData dataWithContentsOfFile:path];
-        NSString *error; NSPropertyListFormat format;
-        data = [NSPropertyListSerialization propertyListFromData:plistData
-                                                mutabilityOption:NSPropertyListImmutable
+        NSError *error; NSPropertyListFormat format;
+        data = [NSPropertyListSerialization propertyListWithData:plistData
+                                                         options:NSPropertyListImmutable
                                                           format:&format
-                                                errorDescription:&error];
+                                                           error:&error];
         if (!data) {
             NSLog(@"Unable to read image data: %@", error);
         }
