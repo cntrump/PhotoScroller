@@ -640,7 +640,7 @@
 		53EB7E3D15B771F3003193F9 /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53EB7E3915B771D4003193F9 /* PhotoViewController.m */; };
 		53EB7E3E15B771F5003193F9 /* ImageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 53EB7E3715B771D4003193F9 /* ImageScrollView.m */; };
 		53EB7E3F15B771F8003193F9 /* TilingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 53EB7E3B15B771D4003193F9 /* TilingView.m */; };
-		53EB7E4715B7744D003193F9 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53EB7E4515B7744D003193F9 /* MainStoryboard.storyboard */; };
+		BA36A2762797E8FD008EEB0D /* MultiImageScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA36A2752797E8FD008EEB0D /* MultiImageScrollViewController.m */; };
 		C9CD3150157E63950099CB16 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9CD314F157E63950099CB16 /* UIKit.framework */; };
 		C9CD3152157E63950099CB16 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9CD3151157E63950099CB16 /* Foundation.framework */; };
 		C9CD3154157E63950099CB16 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9CD3153157E63950099CB16 /* CoreGraphics.framework */; };
@@ -1288,7 +1288,9 @@
 		53EB7E3915B771D4003193F9 /* PhotoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PhotoViewController.m; path = Classes/PhotoViewController.m; sourceTree = SOURCE_ROOT; };
 		53EB7E3A15B771D4003193F9 /* TilingView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TilingView.h; path = Classes/TilingView.h; sourceTree = SOURCE_ROOT; };
 		53EB7E3B15B771D4003193F9 /* TilingView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = TilingView.m; path = Classes/TilingView.m; sourceTree = SOURCE_ROOT; };
-		53EB7E4615B7744D003193F9 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = SOURCE_ROOT; };
+		BA36A2732797E7D5008EEB0D /* PhotoScroller.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = PhotoScroller.entitlements; path = Classes/PhotoScroller.entitlements; sourceTree = SOURCE_ROOT; };
+		BA36A2742797E8FD008EEB0D /* MultiImageScrollViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MultiImageScrollViewController.h; sourceTree = "<group>"; };
+		BA36A2752797E8FD008EEB0D /* MultiImageScrollViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MultiImageScrollViewController.m; sourceTree = "<group>"; };
 		C9CD314B157E63950099CB16 /* PhotoScroll.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoScroll.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9CD314F157E63950099CB16 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C9CD3151157E63950099CB16 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -1993,6 +1995,8 @@
 			children = (
 				53EB7E3415B771D4003193F9 /* AppDelegate.h */,
 				53EB7E3515B771D4003193F9 /* AppDelegate.m */,
+				BA36A2742797E8FD008EEB0D /* MultiImageScrollViewController.h */,
+				BA36A2752797E8FD008EEB0D /* MultiImageScrollViewController.m */,
 				53EB7E3815B771D4003193F9 /* PhotoViewController.h */,
 				53EB7E3915B771D4003193F9 /* PhotoViewController.m */,
 				53EB7E3615B771D4003193F9 /* ImageScrollView.h */,
@@ -2015,10 +2019,10 @@
 				53EB7E2715B76F33003193F9 /* ImageData.plist */,
 				53EB793215B76B07003193F9 /* PhotoScroller_Prefix.pch */,
 				53EB793315B76B07003193F9 /* PhotoScroller-Info.plist */,
-				53EB7E4515B7744D003193F9 /* MainStoryboard.storyboard */,
 				53897E0D1642F7F900FB20C4 /* Default-568h@2x.png */,
 				53897E0E1642F7F900FB20C4 /* Default.png */,
 				53897E0F1642F7F900FB20C4 /* Default@2x.png */,
+				BA36A2732797E7D5008EEB0D /* PhotoScroller.entitlements */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -2701,7 +2705,6 @@
 				53EB7E1D15B76E8B003193F9 /* CuriousFrog_Placeholder.png in Resources */,
 				53EB7E1E15B76E8B003193F9 /* LeggyFrog_Placeholder.png in Resources */,
 				53EB7E1F15B76E8B003193F9 /* PeeringFrog_Placeholder.png in Resources */,
-				53EB7E4715B7744D003193F9 /* MainStoryboard.storyboard in Resources */,
 				53897E101642F7F900FB20C4 /* Default-568h@2x.png in Resources */,
 				53897E111642F7F900FB20C4 /* Default.png in Resources */,
 				53897E121642F7F900FB20C4 /* Default@2x.png in Resources */,
@@ -2717,6 +2720,7 @@
 			files = (
 				53EB7E2615B76F10003193F9 /* main.m in Sources */,
 				53EB7E3C15B771F1003193F9 /* AppDelegate.m in Sources */,
+				BA36A2762797E8FD008EEB0D /* MultiImageScrollViewController.m in Sources */,
 				53EB7E3D15B771F3003193F9 /* PhotoViewController.m in Sources */,
 				53EB7E3E15B771F5003193F9 /* ImageScrollView.m in Sources */,
 				53EB7E3F15B771F8003193F9 /* TilingView.m in Sources */,
@@ -2724,17 +2728,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		53EB7E4515B7744D003193F9 /* MainStoryboard.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				53EB7E4615B7744D003193F9 /* en */,
-			);
-			name = MainStoryboard.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		C9CD3167157E63950099CB16 /* Debug */ = {
@@ -2786,6 +2779,8 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_LABEL = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				ONLY_ACTIVE_ARCH = YES;
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				SDKROOT = iphoneos;
@@ -2833,6 +2828,8 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_LABEL = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				SDKROOT = iphoneos;
@@ -2843,14 +2840,16 @@
 		C9CD316A157E63950099CB16 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = PhotoScroller.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CURRENT_PROJECT_VERSION = 1;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = PhotoScroller_Prefix.pch;
 				INFOPLIST_FILE = "PhotoScroller-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.apple.samplecode.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = PhotoScroll;
+				SUPPORTS_MACCATALYST = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -2859,14 +2858,16 @@
 		C9CD316B157E63950099CB16 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = PhotoScroller.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CURRENT_PROJECT_VERSION = 1;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = PhotoScroller_Prefix.pch;
 				INFOPLIST_FILE = "PhotoScroller-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.apple.samplecode.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = PhotoScroll;
+				SUPPORTS_MACCATALYST = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
