@@ -50,6 +50,6 @@
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate, UIPageViewControllerDataSource>
 
-@property (strong, nonatomic) UIWindow *window;
+@property (nonatomic) UIWindow *window;
 
 @end

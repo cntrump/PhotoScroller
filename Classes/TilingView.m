@@ -48,26 +48,22 @@
 #import "TilingView.h"
 #import <QuartzCore/CATiledLayer.h>
 
-
-@implementation TilingView
-{
+@implementation TilingView {
     NSString *_imageName;
 }
 
-+ (Class)layerClass
-{
++ (Class)layerClass {
 	return [CATiledLayer class];
 }
 
-- (id)initWithImageName:(NSString *)name size:(CGSize)size
-{
-    self = [super initWithFrame:CGRectMake(0, 0, size.width, size.height)];
-    if (self) {
+- (instancetype)initWithImageName:(NSString *)name size:(CGSize)size {
+    if (self = [super initWithFrame:CGRectMake(0, 0, size.width, size.height)]) {
         _imageName = name;
 
         CATiledLayer *tiledLayer = (CATiledLayer *)[self layer];
         tiledLayer.levelsOfDetail = 4;
     }
+
     return self;
 }
 
@@ -76,13 +72,11 @@
 // to 2.0 on retina displays, which is the right call in most cases, but since we're backed
 // by a CATiledLayer it will actually cause us to load the wrong sized tiles.
 //
-- (void)setContentScaleFactor:(CGFloat)contentScaleFactor
-{
+- (void)setContentScaleFactor:(CGFloat)contentScaleFactor {
     [super setContentScaleFactor:1.f];
 }
 
-- (void)drawRect:(CGRect)rect
-{
+- (void)drawRect:(CGRect)rect {
  	CGContextRef context = UIGraphicsGetCurrentContext();
     
     // get the scale from the context by getting the current transform matrix, then asking
@@ -105,13 +99,13 @@
     tileSize.height /= scale;
     
     // calculate the rows and columns of tiles that intersect the rect we have been asked to draw
-    int firstCol = floorf(CGRectGetMinX(rect) / tileSize.width);
-    int lastCol = floorf((CGRectGetMaxX(rect)-1) / tileSize.width);
-    int firstRow = floorf(CGRectGetMinY(rect) / tileSize.height);
-    int lastRow = floorf((CGRectGetMaxY(rect)-1) / tileSize.height);
+    NSInteger firstCol = floor(CGRectGetMinX(rect) / tileSize.width);
+    NSInteger lastCol = floor((CGRectGetMaxX(rect) - 1) / tileSize.width);
+    NSInteger firstRow = floor(CGRectGetMinY(rect) / tileSize.height);
+    NSInteger lastRow = floor((CGRectGetMaxY(rect) - 1) / tileSize.height);
 
-    for (int row = firstRow; row <= lastRow; row++) {
-        for (int col = firstCol; col <= lastCol; col++) {
+    for (NSInteger row = firstRow; row <= lastRow; row++) {
+        for (NSInteger col = firstCol; col <= lastCol; col++) {
             UIImage *tile = [self tileForScale:scale row:row col:col];
             CGRect tileRect = CGRectMake(tileSize.width * col, tileSize.height * row,
                                          tileSize.width, tileSize.height);
@@ -125,14 +119,14 @@
     }
 }
 
-- (UIImage *)tileForScale:(CGFloat)scale row:(int)row col:(int)col
-{
+- (UIImage *)tileForScale:(CGFloat)scale row:(NSInteger)row col:(NSInteger)col {
     // we use "imageWithContentsOfFile:" instead of "imageNamed:" here because we don't
     // want UIImage to cache our tiles
     //
-    NSString *tileName = [NSString stringWithFormat:@"%@_%d_%d_%d", _imageName, (int)(scale * 1000), col, row];
+    NSString *tileName = [NSString stringWithFormat:@"%@_%ld_%ld_%ld", _imageName, (NSInteger)(scale * 1000), col, row];
     NSString *path = [[NSBundle mainBundle] pathForResource:tileName ofType:@"png"];
     UIImage *image = [UIImage imageWithContentsOfFile:path];
+
     return image;
 }
 

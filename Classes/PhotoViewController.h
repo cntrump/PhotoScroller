@@ -49,8 +49,8 @@
 
 @interface PhotoViewController : UIViewController
 
-+ (PhotoViewController *)photoViewControllerForPageIndex:(NSUInteger)pageIndex;
+@property (readonly) NSInteger pageIndex;
 
-- (NSInteger)pageIndex;
++ (PhotoViewController *)photoViewControllerForPageIndex:(NSUInteger)pageIndex;
 
 @end

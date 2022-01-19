@@ -52,8 +52,7 @@
 
 @implementation AppDelegate
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     _window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
     _window.rootViewController = [[MultiImageScrollViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll
                                                                            navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal
@@ -62,8 +61,7 @@
 
     // kick things off by making the first page
     PhotoViewController *pageZero = [PhotoViewController photoViewControllerForPageIndex:0];
-    if (pageZero != nil)
-    {
+    if (pageZero) {
         // assign the first page to the pageViewController (our rootViewController)
         MultiImageScrollViewController *pageViewController = (MultiImageScrollViewController *)self.window.rootViewController;
         pageViewController.dataSource = self;
@@ -73,18 +71,19 @@
                                        animated:NO
                                      completion:NULL];
     }
+
     return YES;
 }
 
-- (UIViewController *)pageViewController:(UIPageViewController *)pvc viewControllerBeforeViewController:(PhotoViewController *)vc
-{
+- (UIViewController *)pageViewController:(UIPageViewController *)pvc viewControllerBeforeViewController:(PhotoViewController *)vc {
     NSUInteger index = vc.pageIndex;
+
     return [PhotoViewController photoViewControllerForPageIndex:(index - 1)];
 }
 
-- (UIViewController *)pageViewController:(UIPageViewController *)pvc viewControllerAfterViewController:(PhotoViewController *)vc
-{
+- (UIViewController *)pageViewController:(UIPageViewController *)pvc viewControllerAfterViewController:(PhotoViewController *)vc {
     NSUInteger index = vc.pageIndex;
+    
     return [PhotoViewController photoViewControllerForPageIndex:(index + 1)];
 }
 

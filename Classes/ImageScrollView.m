@@ -68,8 +68,7 @@ static NSString *_ImageNameAtIndex(NSUInteger index);
 
 #pragma mark -
 
-@interface ImageScrollView () <UIScrollViewDelegate>
-{
+@interface ImageScrollView () <UIScrollViewDelegate> {
     UIImageView *_zoomView;  // if tiling, this contains a very low-res placeholder image,
                              // otherwise it contains the full image.
     CGSize _imageSize;
@@ -86,22 +85,19 @@ static NSString *_ImageNameAtIndex(NSUInteger index);
 
 @implementation ImageScrollView
 
-- (id)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self)
-    {
+- (instancetype)initWithFrame:(CGRect)frame {
+    if (self = [super initWithFrame:frame]) {
         self.showsVerticalScrollIndicator = NO;
         self.showsHorizontalScrollIndicator = NO;
         self.bouncesZoom = YES;
         self.decelerationRate = UIScrollViewDecelerationRateFast;
         self.delegate = self;        
     }
+
     return self;
 }
 
-- (void)setIndex:(NSUInteger)index
-{
+- (void)setIndex:(NSUInteger)index {
     _index = index;
     
 #if TILE_IMAGES
@@ -111,13 +107,11 @@ static NSString *_ImageNameAtIndex(NSUInteger index);
 #endif
 }
 
-+ (NSUInteger)imageCount
-{
++ (NSUInteger)imageCount {
     return _ImageCount();
 }
 
-- (void)layoutSubviews 
-{
+- (void)layoutSubviews {
     [super layoutSubviews];
     
     // center the zoom view as it becomes smaller than the size of the screen
@@ -125,22 +119,23 @@ static NSString *_ImageNameAtIndex(NSUInteger index);
     CGRect frameToCenter = _zoomView.frame;
     
     // center horizontally
-    if (frameToCenter.size.width < boundsSize.width)
+    if (frameToCenter.size.width < boundsSize.width) {
         frameToCenter.origin.x = (boundsSize.width - frameToCenter.size.width) / 2;
-    else
+    } else {
         frameToCenter.origin.x = 0;
-    
+    }
+
     // center vertically
-    if (frameToCenter.size.height < boundsSize.height)
+    if (frameToCenter.size.height < boundsSize.height) {
         frameToCenter.origin.y = (boundsSize.height - frameToCenter.size.height) / 2;
-    else
+    } else {
         frameToCenter.origin.y = 0;
-    
+    }
+
     _zoomView.frame = frameToCenter;
 }
 
-- (void)setFrame:(CGRect)frame
-{
+- (void)setFrame:(CGRect)frame {
     BOOL sizeChanging = !CGSizeEqualToSize(frame.size, self.frame.size);
     
     if (sizeChanging) {
@@ -157,8 +152,7 @@ static NSString *_ImageNameAtIndex(NSUInteger index);
 
 #pragma mark - UIScrollViewDelegate
 
-- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
-{
+- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
     return _zoomView;
 }
 
@@ -167,8 +161,7 @@ static NSString *_ImageNameAtIndex(NSUInteger index);
 
 #if TILE_IMAGES
 
-- (void)displayTiledImageNamed:(NSString *)imageName size:(CGSize)imageSize
-{
+- (void)displayTiledImageNamed:(NSString *)imageName size:(CGSize)imageSize {
     // clear views for the previous image
     [_zoomView removeFromSuperview];
     _zoomView = nil;
@@ -191,8 +184,7 @@ static NSString *_ImageNameAtIndex(NSUInteger index);
 
 #else
 
-- (void)displayImage:(UIImage *)image
-{
+- (void)displayImage:(UIImage *)image {
     // clear the previous image
     [_zoomView removeFromSuperview];
     _zoomView = nil;
@@ -209,16 +201,14 @@ static NSString *_ImageNameAtIndex(NSUInteger index);
 
 #endif // TILE_IMAGES
 
-- (void)configureForImageSize:(CGSize)imageSize
-{
+- (void)configureForImageSize:(CGSize)imageSize {
     _imageSize = imageSize;
     self.contentSize = imageSize;
     [self setMaxMinZoomScalesForCurrentBounds];
     self.zoomScale = self.minimumZoomScale;
 }
 
-- (void)setMaxMinZoomScalesForCurrentBounds
-{
+- (void)setMaxMinZoomScalesForCurrentBounds {
     CGSize boundsSize = self.bounds.size;
                 
     // calculate min/max zoomscale
@@ -250,8 +240,7 @@ static NSString *_ImageNameAtIndex(NSUInteger index);
 
 #pragma mark - Rotation support
 
-- (void)prepareToResize
-{
+- (void)prepareToResize {
     CGPoint boundsCenter = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds));
     _pointToCenterAfterResize = [self convertPoint:boundsCenter toView:_zoomView];
 
@@ -259,12 +248,12 @@ static NSString *_ImageNameAtIndex(NSUInteger index);
     
     // If we're at the minimum zoom scale, preserve that by returning 0, which will be converted to the minimum
     // allowable scale when the scale is restored.
-    if (_scaleToRestoreAfterResize <= self.minimumZoomScale + FLT_EPSILON)
+    if (_scaleToRestoreAfterResize <= self.minimumZoomScale + FLT_EPSILON) {
         _scaleToRestoreAfterResize = 0;
+    }
 }
 
-- (void)recoverFromResizing
-{
+- (void)recoverFromResizing {
     [self setMaxMinZoomScalesForCurrentBounds];
     
     // Step 1: restore zoom scale, first making sure it is within the allowable range.
@@ -293,22 +282,20 @@ static NSString *_ImageNameAtIndex(NSUInteger index);
     self.contentOffset = offset;
 }
 
-- (CGPoint)maximumContentOffset
-{
+- (CGPoint)maximumContentOffset {
     CGSize contentSize = self.contentSize;
     CGSize boundsSize = self.bounds.size;
+
     return CGPointMake(contentSize.width - boundsSize.width, contentSize.height - boundsSize.height);
 }
 
-- (CGPoint)minimumContentOffset
-{
+- (CGPoint)minimumContentOffset {
     return CGPointZero;
 }
 
 @end
 
-static NSArray *_ImageData(void)
-{
+static NSArray *_ImageData(void) {
     static NSArray *data = nil;
 
     static dispatch_once_t onceToken;
@@ -328,42 +315,41 @@ static NSArray *_ImageData(void)
     return data;
 }
 
-static NSUInteger _ImageCount(void)
-{
+static NSUInteger _ImageCount(void) {
     static NSUInteger count = 0;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         count = [_ImageData() count];
     });
+
     return count;
 }
 
-static NSString *_ImageNameAtIndex(NSUInteger index)
-{
+static NSString *_ImageNameAtIndex(NSUInteger index) {
     NSDictionary *info = [_ImageData() objectAtIndex:index];
+    
     return [info valueForKey:@"name"];
 }
 
 #if !TILE_IMAGES
 // we use "imageWithContentsOfFile:" instead of "imageNamed:" here to avoid caching
-static UIImage *_ImageAtIndex(NSUInteger index)
-{
+static UIImage *_ImageAtIndex(NSUInteger index) {
     NSString *imageName = _ImageNameAtIndex(index);
     NSString *path = [[NSBundle mainBundle] pathForResource:imageName ofType:@"jpg"];
+
     return [UIImage imageWithContentsOfFile:path];
 }
 #endif
 
 #if TILE_IMAGES
-static CGSize _ImageSizeAtIndex(NSUInteger index)
-{
+static CGSize _ImageSizeAtIndex(NSUInteger index) {
     NSDictionary *info = [_ImageData() objectAtIndex:index];
+
     return CGSizeMake([[info valueForKey:@"width"] floatValue],
                       [[info valueForKey:@"height"] floatValue]);
 }
 
-static UIImage *_PlaceholderImageNamed(NSString *name)
-{
+static UIImage *_PlaceholderImageNamed(NSString *name) {
     return [UIImage imageNamed:[NSString stringWithFormat:@"%@_Placeholder", name]];
 }
 #endif

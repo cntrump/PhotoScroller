@@ -47,10 +47,6 @@
 
 #import "MultiImageScrollViewController.h"
 
-@interface MultiImageScrollViewController ()
-
-@end
-
 @implementation MultiImageScrollViewController
 
 - (void)viewDidLoad {

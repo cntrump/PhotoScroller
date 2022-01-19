@@ -48,40 +48,35 @@
 #import "PhotoViewController.h"
 #import "ImageScrollView.h"
 
-@interface PhotoViewController ()
-{
+@interface PhotoViewController () {
     NSUInteger _pageIndex;
 }
+
 @end
 
 @implementation PhotoViewController
 
-+ (PhotoViewController *)photoViewControllerForPageIndex:(NSUInteger)pageIndex
-{
-    if (pageIndex < [ImageScrollView imageCount])
-    {
++ (PhotoViewController *)photoViewControllerForPageIndex:(NSUInteger)pageIndex {
+    if (pageIndex < [ImageScrollView imageCount]) {
         return [[self alloc] initWithPageIndex:pageIndex];
     }
+
     return nil;
 }
 
-- (id)initWithPageIndex:(NSInteger)pageIndex
-{
-    self = [super initWithNibName:nil bundle:nil];
-    if (self)
-    {
+- (instancetype)initWithPageIndex:(NSInteger)pageIndex {
+    if (self = [super initWithNibName:nil bundle:nil]) {
         _pageIndex = pageIndex;
     }
+
     return self;
 }
 
-- (NSInteger)pageIndex
-{
+- (NSInteger)pageIndex {
     return _pageIndex;
 }
 
-- (void)loadView
-{
+- (void)loadView {
     ImageScrollView *scrollView = [[ImageScrollView alloc] init];
     scrollView.index = _pageIndex;
     scrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
@@ -89,8 +84,7 @@
 }
 
 // (this can also be defined in Info.plist via UISupportedInterfaceOrientations)
-- (UIInterfaceOrientationMask)supportedInterfaceOrientations
-{
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
     return UIInterfaceOrientationMaskAllButUpsideDown;
 }
 

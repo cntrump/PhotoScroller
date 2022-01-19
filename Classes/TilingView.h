@@ -50,7 +50,7 @@
 
 @interface TilingView : UIView 
 
-- (id)initWithImageName:(NSString *)name size:(CGSize)size;
-- (UIImage *)tileForScale:(CGFloat)scale row:(int)row col:(int)col;
+- (instancetype)initWithImageName:(NSString *)name size:(CGSize)size;
+- (UIImage *)tileForScale:(CGFloat)scale row:(NSInteger)row col:(NSInteger)col;
 
 @end
