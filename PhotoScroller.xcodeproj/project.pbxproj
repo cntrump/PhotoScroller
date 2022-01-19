@@ -1289,7 +1289,7 @@
 		53EB7E3915B771D4003193F9 /* PhotoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PhotoViewController.m; path = Classes/PhotoViewController.m; sourceTree = SOURCE_ROOT; };
 		53EB7E3A15B771D4003193F9 /* TilingView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TilingView.h; path = Classes/TilingView.h; sourceTree = SOURCE_ROOT; };
 		53EB7E3B15B771D4003193F9 /* TilingView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = TilingView.m; path = Classes/TilingView.m; sourceTree = SOURCE_ROOT; };
-		BA36A2732797E7D5008EEB0D /* PhotoScroller.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = PhotoScroller.entitlements; path = Classes/PhotoScroller.entitlements; sourceTree = SOURCE_ROOT; };
+		BA36A2732797E7D5008EEB0D /* PhotoScroller.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = PhotoScroller.entitlements; path = Resources/PhotoScroller.entitlements; sourceTree = SOURCE_ROOT; };
 		BA36A2742797E8FD008EEB0D /* MultiImageScrollViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MultiImageScrollViewController.h; sourceTree = "<group>"; };
 		BA36A2752797E8FD008EEB0D /* MultiImageScrollViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MultiImageScrollViewController.m; sourceTree = "<group>"; };
 		BA36A27A2797FA0A008EEB0D /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
@@ -2846,7 +2846,7 @@
 		C9CD316A157E63950099CB16 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = PhotoScroller.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Resources/PhotoScroller.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CURRENT_PROJECT_VERSION = 1;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -2864,7 +2864,7 @@
 		C9CD316B157E63950099CB16 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = PhotoScroller.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Resources/PhotoScroller.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CURRENT_PROJECT_VERSION = 1;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
