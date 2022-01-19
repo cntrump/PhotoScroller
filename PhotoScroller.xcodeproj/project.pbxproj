@@ -2005,7 +2005,7 @@
 				53EB7BAC15B76E8B003193F9 /* Placeholder Images */,
 			);
 			name = PhotoScroller;
-			path = FrogScroller;
+			path = Classes;
 			sourceTree = "<group>";
 		};
 		C9CD3156157E63950099CB16 /* Supporting Files */ = {
