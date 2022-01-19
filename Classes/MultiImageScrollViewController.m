@@ -1,5 +1,5 @@
 /*
-     File: MultiImageScrollViewController.h
+     File: MultiImageScrollViewController.m
  Abstract: Configures and displays the paging scroll view and handles tiling and page configuration.
   Version: 1.3
 

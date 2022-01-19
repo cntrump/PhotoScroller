@@ -641,6 +641,7 @@
 		53EB7E3E15B771F5003193F9 /* ImageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 53EB7E3715B771D4003193F9 /* ImageScrollView.m */; };
 		53EB7E3F15B771F8003193F9 /* TilingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 53EB7E3B15B771D4003193F9 /* TilingView.m */; };
 		BA36A2762797E8FD008EEB0D /* MultiImageScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA36A2752797E8FD008EEB0D /* MultiImageScrollViewController.m */; };
+		BA36A27C2797FA0A008EEB0D /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BA36A27B2797FA0A008EEB0D /* SceneDelegate.m */; };
 		C9CD3150157E63950099CB16 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9CD314F157E63950099CB16 /* UIKit.framework */; };
 		C9CD3152157E63950099CB16 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9CD3151157E63950099CB16 /* Foundation.framework */; };
 		C9CD3154157E63950099CB16 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9CD3153157E63950099CB16 /* CoreGraphics.framework */; };
@@ -1291,6 +1292,8 @@
 		BA36A2732797E7D5008EEB0D /* PhotoScroller.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = PhotoScroller.entitlements; path = Classes/PhotoScroller.entitlements; sourceTree = SOURCE_ROOT; };
 		BA36A2742797E8FD008EEB0D /* MultiImageScrollViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MultiImageScrollViewController.h; sourceTree = "<group>"; };
 		BA36A2752797E8FD008EEB0D /* MultiImageScrollViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MultiImageScrollViewController.m; sourceTree = "<group>"; };
+		BA36A27A2797FA0A008EEB0D /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
+		BA36A27B2797FA0A008EEB0D /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
 		C9CD314B157E63950099CB16 /* PhotoScroll.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoScroll.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9CD314F157E63950099CB16 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C9CD3151157E63950099CB16 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -1995,6 +1998,8 @@
 			children = (
 				53EB7E3415B771D4003193F9 /* AppDelegate.h */,
 				53EB7E3515B771D4003193F9 /* AppDelegate.m */,
+				BA36A27A2797FA0A008EEB0D /* SceneDelegate.h */,
+				BA36A27B2797FA0A008EEB0D /* SceneDelegate.m */,
 				BA36A2742797E8FD008EEB0D /* MultiImageScrollViewController.h */,
 				BA36A2752797E8FD008EEB0D /* MultiImageScrollViewController.m */,
 				53EB7E3815B771D4003193F9 /* PhotoViewController.h */,
@@ -2721,6 +2726,7 @@
 				53EB7E2615B76F10003193F9 /* main.m in Sources */,
 				53EB7E3C15B771F1003193F9 /* AppDelegate.m in Sources */,
 				BA36A2762797E8FD008EEB0D /* MultiImageScrollViewController.m in Sources */,
+				BA36A27C2797FA0A008EEB0D /* SceneDelegate.m in Sources */,
 				53EB7E3D15B771F3003193F9 /* PhotoViewController.m in Sources */,
 				53EB7E3E15B771F5003193F9 /* ImageScrollView.m in Sources */,
 				53EB7E3F15B771F8003193F9 /* TilingView.m in Sources */,
